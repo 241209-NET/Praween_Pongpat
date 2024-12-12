@@ -10,6 +10,6 @@ public class DrinkModel{
     //override ToString
     public override string ToString()
     {
-        return Name + " was chosen! for total spent of " + Price + "for " + TimesConsumed + " times!";
+        return Name + " was chosen! with total spent of " + Price + " for " + TimesConsumed + " times!";
     }
 }

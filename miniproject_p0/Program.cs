@@ -9,19 +9,21 @@ class Program
 {
     static void Main(string[] args)
     {
-        //declare list
+        //declare list, fileName
         List<DrinkModel> drinkList = [];
+        //string fileName = "drinks.json";
         
-        //load drinks---------------------
-        
+        //load drinks --> todo?    
 
         bool isExit = false;
+        Console.WriteLine("Welcome to Drink Expense tracker!");
+
         while(!isExit){
             //prompt
             Util.PrintMenu();
             Console.Write("\nChoose your option: ");
             //read input, if null, set to 5 (exit)
-            string? option = Console.ReadLine() ?? "5";
+            string? option = Console.ReadLine() ?? "0";
 
             //call method
             int validatedOption = Validations.ValidateNumber(option);
@@ -45,7 +47,7 @@ class Program
                     break;
                 //save and exit
                 case 5:
-                    //todo: save---------------------------
+                    //save----------> todo?
                     isExit = true;
                     break;
                 default:
@@ -54,13 +56,13 @@ class Program
 
             }
 
-            Console.WriteLine("\n\n");
+            Console.WriteLine("\n----------------------------\n");
         }
     }
 
     //for option 1:
     public static void ShowAllDrinks(List<DrinkModel> list){
-        if(list.Count == 0) Console.WriteLine("No drinks yet, you must be thirsty!?");
+        if(list.Count == 0) Console.WriteLine("No drinks yet, you must be thirsty......!?");
         else{
             foreach (DrinkModel drink in list){
                 Console.WriteLine(drink);
@@ -75,7 +77,7 @@ class Program
         double price = Validations.GetValidPrice();
         
         //valid response, proceed to adding
-        DrinkModel newDrink = new DrinkModel{Name = name, Price = price, TimesConsumed = 1};
+        DrinkModel newDrink = new DrinkModel(){Name = name, Price = price, TimesConsumed = 1};
         list.Add(newDrink);
     }
 
@@ -88,7 +90,7 @@ class Program
         }
 
         //prompt, get input
-        Console.Write("\nWhat are you drinking today? :");
+        Console.WriteLine("\nWhat are you drinking today?");
         string name = Validations.GetValidName();
         double price;
 
@@ -114,7 +116,7 @@ class Program
 
 
         //prompt, get input
-        Console.WriteLine("\nWhich drink you'd like to find avg. and total?: ");
+        Console.WriteLine("\nWhich drink you'd like to find avg. and total?");
         string name = Validations.GetValidName();
 
         foreach(DrinkModel drink in list){

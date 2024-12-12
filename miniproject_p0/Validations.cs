@@ -6,13 +6,13 @@ public class Validations{
         if(int.TryParse(str, out int num)){
             return num;
         }
-        else return 5;
+        else return 0;
     }
 
     //helper method: validate for letter
     public static string ValidateLetter(string str){
         //condition: not null, no blank space, white space, no number
-        if(string.IsNullOrWhiteSpace(str) || !str.All(char.IsLetter)){
+        if(string.IsNullOrEmpty(str) || !str.All(c => char.IsLetter(c) || char.IsWhiteSpace(c))){
             //failed condition
             Console.WriteLine("Drink name cannot be blank and/or numbers!");
             return "";

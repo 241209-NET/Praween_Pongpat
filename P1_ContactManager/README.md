@@ -19,7 +19,7 @@ This is a Web API made in .NET to help users build, track and persist user's con
 ## Tech Stack
 
 - C# (Back End Programming Language)
-- SQL Server (Azure Hosted)
+- SQL Server (Local Hosting)
 - EF Core (ORM Tech)
 - ASP.NET (Web API Framework)
 
@@ -34,6 +34,7 @@ This is a Web API made in .NET to help users build, track and persist user's con
 - Should be able to delete contact for user's account
 
 ## Stretch Goals
+- Should be able to login to access user's account information
 - Should be able to search all contacts for user's account
 - Should be able to search a contact for user's account
 - Should be able to update user's account information

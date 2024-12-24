@@ -38,7 +38,8 @@ This is a Web API made in .NET to help users build, track and persist user's con
 - Should be able to search a contact for user's account
 - Should be able to update user's account information
 - Should be able to update a contact information for user's account
-- Should be able to sort contacts for 
+- Should be able to sort contacts for user's account
+- Should implement Address Entity to support each contact
 
 ## Entity Relationship Diagram
 ![p1_ERD](./p1_ERD.png)

@@ -6,5 +6,5 @@ public class User{
     public string? Email { get; set; }
     public required string Password { get; set; }
 
-    public List<Contact> ContactList { get; set; } = []; //show relation "1" user to "N" contacts
+    public List<Contact> Contacts { get; set; } = []; //show relation "1" user to "N" contacts
 }

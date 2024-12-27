@@ -9,6 +9,4 @@ public class Contact{
     public string? Memo { get; set; }
 
     public User User { get; set; } //show relation "1" user to "N" contacts
-
-    //possible Address Model, for later
 }

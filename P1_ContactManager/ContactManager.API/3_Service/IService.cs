@@ -4,16 +4,16 @@ namespace ContactManager.API.Service;
 
 public interface IUserService{
     //CRUD op. for Basic goals
-    IEnumerable<User> GetAllUsers();
-    User? GetUserById(int userId);
-    User CreateUser(User newUser);
-    User? DeleteUser(int userId);
+    IEnumerable<UserOutputDTO> GetAllUsers();
+    UserOutputDTO? GetUserById(int userId);
+    UserOutputDTO CreateUser(UserInputDTO userInputDTO);
+    UserOutputDTO? DeleteUser(int userId);
 }
 
 public interface IContactService{
     //CRUD op. for Basic goals
-    IEnumerable<Contact> GetAllContacts(int userId);
-    Contact? GetContactById(int userId, int contactId);
-    Contact CreateContact(int userId, Contact newContact);
-    Contact? DeleteContact(int userId, int contactId);
+    IEnumerable<ContactOutputDTO> GetAllContacts(int userId);
+    ContactOutputDTO? GetContactById(int userId, int contactId);
+    ContactOutputDTO CreateContact(int userId, ContactInputDTO contactInputDTO);
+    ContactOutputDTO? DeleteContact(int userId, int contactId);
 }

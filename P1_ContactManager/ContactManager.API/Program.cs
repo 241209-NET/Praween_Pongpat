@@ -1,6 +1,7 @@
 using ContactManager.API.Data;
 using ContactManager.API.Repository;
 using ContactManager.API.Service;
+using ContactManager.API.Util;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,9 @@ builder.Services.AddScoped<IContactService, ContactService>();
 //Add repo dependencies
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IContactRepository, ContactRepository>();
+
+//Use singleton for utilies
+builder.Services.AddSingleton<Utilities>(); 
 
 //Add controllers
 builder.Services.AddControllers()

@@ -1,33 +1,43 @@
 using ContactManager.API.Model;
 using ContactManager.API.Repository;
+using ContactManager.API.Util;
 
 namespace ContactManager.API.Service;
 
 public class ContactService : IContactService
 {
     private readonly IContactRepository _contactRepository;
-    public ContactService(IContactRepository contactRepository){
+    private readonly Utilities _utilities;
+    public ContactService(IContactRepository contactRepository, Utilities utilities){
         _contactRepository = contactRepository;
+        _utilities = utilities;
     }
-    public Contact CreateContact(int userId, Contact newContact)
+    public ContactOutputDTO CreateContact(int userId, ContactInputDTO contactInputDTO)
     {
-        return _contactRepository.CreateContact(userId, newContact);
+        var contact = _utilities.ContactInputDTOtoContactObject(contactInputDTO);
+        var newContact = _contactRepository.CreateContact(userId, contact);
+        return _utilities.ContactObjectToDTOOutput(newContact);
     }
 
-    public Contact? DeleteContact(int userId, int contactId)
+    public ContactOutputDTO? DeleteContact(int userId, int contactId)
     {
         var contact = GetContactById(userId, contactId);
         if(contact is null) return null;
-        return _contactRepository.DeleteContact(userId, contactId);
+        var deletedContact = _contactRepository.DeleteContact(userId, contactId);
+        if(deletedContact is null) return null;
+        return _utilities.ContactObjectToDTOOutput(deletedContact);
     }
 
-    public IEnumerable<Contact> GetAllContacts(int userId)
+    public IEnumerable<ContactOutputDTO> GetAllContacts(int userId)
     {
-        return _contactRepository.GetAllContacts(userId);
+        var contactList = _contactRepository.GetAllContacts(userId);
+        return contactList.Select( contact => _utilities.ContactObjectToDTOOutput(contact));
     }
 
-    public Contact? GetContactById(int userId, int contactId)
+    public ContactOutputDTO? GetContactById(int userId, int contactId)
     {
-        return _contactRepository.GetContactById(userId, contactId);
+        var contact = _contactRepository.GetContactById(userId, contactId);
+        if(contact is null) return null;
+        return _utilities.ContactObjectToDTOOutput(contact);
     }
 }

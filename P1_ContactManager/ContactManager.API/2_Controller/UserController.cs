@@ -13,8 +13,8 @@ public class UserController : ControllerBase {
     }
 
     [HttpPost]
-    public IActionResult CreateUser(User newUser){
-        var user = _userService.CreateUser(newUser);
+    public IActionResult CreateUser(UserInputDTO userInputDTO){
+        var user = _userService.CreateUser(userInputDTO);
         if(user is null) return BadRequest("something is wrong on createUser");
         return Ok(user);
     }

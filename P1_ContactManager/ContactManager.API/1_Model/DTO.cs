@@ -22,7 +22,7 @@ public class ContactInputDTO{
 }
 
 public class ContactOutputDTO{
-     public int ContactId { get; set; }
+    public int ContactId { get; set; }
     public int UserId { get; set; }
     public required string Name { get; set; }
     public required string PhoneNumber { get; set; }

@@ -28,8 +28,8 @@ public class ContactController : ControllerBase {
     }
 
     [HttpPost]
-    public IActionResult CreateContact(int userId, Contact newContact){
-        var contact = _contactService.CreateContact(userId, newContact);
+    public IActionResult CreateContact(int userId, ContactInputDTO contactInputDTO){
+        var contact = _contactService.CreateContact(userId, contactInputDTO);
         if(contact is null) return BadRequest("something is wrong on createContact");
         return Ok(contact);
     }

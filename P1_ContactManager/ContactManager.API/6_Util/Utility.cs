@@ -9,7 +9,7 @@ public class Utilities{
             Username = user.Username,
             Email = user.Email,
             Password = user.Password,
-            Contacts = user.Contacts
+            Contacts = user.Contacts.Select(c => c.ContactId).ToList()
         };
     }
 

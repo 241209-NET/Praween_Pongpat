@@ -11,7 +11,7 @@ public class UserOutputDTO{
     public required string Username { get; set; }
     public string? Email { get; set; }
     public required string Password { get; set; }
-    public List<Contact> Contacts { get; set; } = [];
+    public List<int> Contacts { get; set; } = [];
 }
 
 public class ContactInputDTO{

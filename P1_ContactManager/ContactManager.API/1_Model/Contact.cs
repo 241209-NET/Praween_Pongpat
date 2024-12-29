@@ -7,6 +7,4 @@ public class Contact{
     public required string PhoneNumber { get; set; }
     public string? Email { get; set; }
     public string? Memo { get; set; }
-
-    public User User { get; set; } //show relation "1" user to "N" contacts
 }

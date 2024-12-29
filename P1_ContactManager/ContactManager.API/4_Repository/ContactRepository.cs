@@ -22,6 +22,7 @@ public class ContactRepository : IContactRepository
     public Contact? DeleteContact(int userId, int contactId)
     {
         var contact = GetContactById(userId, contactId);
+        //contact is ensured not null, screened in service layer
         _contactManagerContext.Contacts.Remove(contact!);
         _contactManagerContext.SaveChanges();
         return contact;

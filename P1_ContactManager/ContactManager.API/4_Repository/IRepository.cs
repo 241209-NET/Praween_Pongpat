@@ -8,6 +8,7 @@ public interface IUserRepository{
     User? GetUserById(int userId);
     User CreateUser(User newUser);
     User? DeleteUser(int userId);
+     void UpdateUser(User user);
 }
 
 public interface IContactRepository{
@@ -16,4 +17,5 @@ public interface IContactRepository{
     Contact? GetContactById(int userId, int contactId);
     Contact CreateContact(int userId, Contact newContact);
     Contact? DeleteContact(int userId, int contactId);
+    void UpdateContact(Contact contact);
 }

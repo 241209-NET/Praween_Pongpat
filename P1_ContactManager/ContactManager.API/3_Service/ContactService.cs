@@ -40,4 +40,19 @@ public class ContactService : IContactService
         if(contact is null) return null;
         return _utilities.ContactObjectToDTOOutput(contact);
     }
+
+    public ContactOutputDTO? UpdateContact(int userId, int contactId, ContactUpdateDTO contactUpdateDTO)
+    {
+        var existingContact = _contactRepository.GetContactById(userId, contactId);
+        if (existingContact == null) return null;
+
+        existingContact.Name = contactUpdateDTO.Name;
+        existingContact.PhoneNumber = contactUpdateDTO.PhoneNumber ?? existingContact.PhoneNumber;
+        existingContact.Email = contactUpdateDTO.Email ?? existingContact.Email;
+        existingContact.Memo = contactUpdateDTO.Memo ?? existingContact.Memo;
+
+        _contactRepository.UpdateContact(existingContact);
+        return _utilities.ContactObjectToDTOOutput(existingContact);
+    }
+
 }

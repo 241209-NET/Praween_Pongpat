@@ -8,6 +8,7 @@ public interface IUserService{
     UserOutputDTO? GetUserById(int userId);
     UserOutputDTO CreateUser(UserInputDTO userInputDTO);
     UserOutputDTO? DeleteUser(int userId);
+    UserOutputDTO? UpdateUser(int userId, UserUpdateDTO userUpdateDTO);
 }
 
 public interface IContactService{
@@ -16,4 +17,5 @@ public interface IContactService{
     ContactOutputDTO? GetContactById(int userId, int contactId);
     ContactOutputDTO CreateContact(int userId, ContactInputDTO contactInputDTO);
     ContactOutputDTO? DeleteContact(int userId, int contactId);
+    ContactOutputDTO? UpdateContact(int userId, int contactId, ContactUpdateDTO contactUpdateDTO);
 }

@@ -41,4 +41,10 @@ public class UserRepository : IUserRepository
             .Include(c => c.Contacts)
             .FirstOrDefault(u => u.UserId == userId);
     }
+
+    public void UpdateUser(User user)
+    {
+        _contactManagerContext.Users.Update(user);
+        _contactManagerContext.SaveChanges();
+    }
 }

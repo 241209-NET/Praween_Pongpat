@@ -40,4 +40,10 @@ public class ContactRepository : IContactRepository
         return _contactManagerContext.Contacts
             .FirstOrDefault(c => c.UserId == userId && c.ContactId == contactId);
     }
+
+    public void UpdateContact(Contact contact)
+    {
+        _contactManagerContext.Contacts.Update(contact);
+        _contactManagerContext.SaveChanges();
+    }
 }

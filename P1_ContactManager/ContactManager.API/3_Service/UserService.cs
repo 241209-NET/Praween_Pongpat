@@ -41,4 +41,17 @@ public class UserService : IUserService
         if(user is null) return null;
         return _utilities.UserObjectToDTOOutput(user);
     }
+
+    public UserOutputDTO? UpdateUser(int userId, UserUpdateDTO userUpdateDTO)
+    {
+        var existingUser = _userRepository.GetUserById(userId);
+        if (existingUser == null) return null;
+
+        existingUser.Username = userUpdateDTO.Username;
+        existingUser.Email = userUpdateDTO.Email ?? existingUser.Email;
+        existingUser.Password = userUpdateDTO.Password ?? existingUser.Password;
+
+        _userRepository.UpdateUser(existingUser);
+        return _utilities.UserObjectToDTOOutput(existingUser);
+}
 }

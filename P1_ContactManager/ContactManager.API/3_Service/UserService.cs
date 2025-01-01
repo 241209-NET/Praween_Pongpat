@@ -1,6 +1,7 @@
 using ContactManager.API.Model;
 using ContactManager.API.Repository;
 using ContactManager.API.Util;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ContactManager.API.Service;
 
@@ -22,7 +23,7 @@ public class UserService : IUserService
     
     public UserOutputDTO? DeleteUser(int userId)
     {
-        var user = GetUserById(userId);
+        var user = _userRepository.GetUserById(userId);
         if(user is null) return null;
         var deletedUser = _userRepository.DeleteUser(userId);
         if(deletedUser is null) return null;
@@ -45,7 +46,7 @@ public class UserService : IUserService
     public UserOutputDTO? UpdateUser(int userId, UserUpdateDTO userUpdateDTO)
     {
         var existingUser = _userRepository.GetUserById(userId);
-        if (existingUser == null) return null;
+        if (existingUser is null) return null;
 
         existingUser.Username = userUpdateDTO.Username;
         existingUser.Email = userUpdateDTO.Email ?? existingUser.Email;
@@ -53,5 +54,5 @@ public class UserService : IUserService
 
         _userRepository.UpdateUser(existingUser);
         return _utilities.UserObjectToDTOOutput(existingUser);
-}
+    }
 }

@@ -54,5 +54,4 @@ public class ContactService : IContactService
         _contactRepository.UpdateContact(existingContact);
         return _utilities.ContactObjectToDTOOutput(existingContact);
     }
-
 }

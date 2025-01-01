@@ -42,9 +42,10 @@ public class UserRepository : IUserRepository
             .FirstOrDefault(u => u.UserId == userId);
     }
 
-    public void UpdateUser(User user)
+    public User UpdateUser(User user)
     {
         _contactManagerContext.Users.Update(user);
         _contactManagerContext.SaveChanges();
+        return user;
     }
 }

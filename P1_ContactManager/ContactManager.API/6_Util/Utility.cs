@@ -15,7 +15,7 @@ public class Utilities{
 
     public User UserInputDTOToUserObject(UserInputDTO userInputDTO){
         return new User{
-            Username = userInputDTO.UserName,
+            Username = userInputDTO.Username,
             Email = userInputDTO.Email,
             Password = userInputDTO.Password
         };

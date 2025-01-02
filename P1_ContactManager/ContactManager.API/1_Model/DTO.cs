@@ -4,6 +4,7 @@ namespace ContactManager.API.Model;
 
 public class UserInputDTO{
     public required string Username { get; set; }
+    [Required]
     [EmailAddress]
     public string? Email { get; set; }
     public required string Password { get; set; }
@@ -19,8 +20,10 @@ public class UserOutputDTO{
 
 public class ContactInputDTO{
     public required string Name { get; set; }
+    [Required]
     [Phone]
     public required string PhoneNumber { get; set; }
+    [Required]
     [EmailAddress]
     public string? Email { get; set; }
     public string? Memo { get; set; }
